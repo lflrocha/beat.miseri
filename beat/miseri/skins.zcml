@@ -1,0 +1,11 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:cmf="http://namespaces.zope.org/cmf"
+    i18n_domain="beat.miseri">
+
+  <!-- File System Directory Views registration -->
+  <cmf:registerDirectory name="beat_miseri_custom_images"/>
+  <cmf:registerDirectory name="beat_miseri_custom_templates"/>
+  <cmf:registerDirectory name="beat_miseri_styles"/>
+  <cmf:registerDirectory name="beat_miseri_scripts"/>
+</configure>

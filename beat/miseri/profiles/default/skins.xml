@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<object name="portal_skins" allow_any="False" cookie_persistence="False"
+   default_skin="Miseri Coloni Theme">
+
+ <object name="beat_miseri_custom_images"
+    meta_type="Filesystem Directory View"
+    directory="beat.miseri:skins/beat_miseri_custom_images"/>
+ <object name="beat_miseri_custom_templates"
+    meta_type="Filesystem Directory View"
+    directory="beat.miseri:skins/beat_miseri_custom_templates"/>
+ <object name="beat_miseri_styles"
+    meta_type="Filesystem Directory View"
+    directory="beat.miseri:skins/beat_miseri_styles"/>
+ <object name="beat_miseri_scripts"
+    meta_type="Filesystem Directory View"
+    directory="beat.miseri:skins/beat_miseri_scripts"/>
+
+
+ <skin-path name="Miseri Coloni Theme" based-on="Plone Default">
+  <layer name="beat_miseri_custom_images"
+     insert-after="custom"/>
+  <layer name="beat_miseri_custom_templates"
+     insert-after="beat_miseri_custom_images"/>
+  <layer name="beat_miseri_styles"
+     insert-after="beat_miseri_custom_templates"/>
+  <layer name="beat_miseri_scripts"
+     insert-after="beat_miseri_custom_styles"/>
+ </skin-path>
+
+</object>

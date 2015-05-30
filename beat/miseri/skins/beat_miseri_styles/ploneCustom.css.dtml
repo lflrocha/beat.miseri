@@ -1,0 +1,221 @@
+/* <dtml-with base_properties> (do not remove this :) */
+/* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
+
+.media-item.odd {
+    background-color:transparent  !important;
+}
+
+.media-item {
+    border:1px solid #402309 !important;
+}
+
+
+a {
+  color: #402305;
+}
+
+body {
+  background: url('&dtml-portal_url;/fundo.jpg');
+  width: 100%;
+  margin: 0 auto;
+}
+
+.documentContent  {
+  background:none repeat scroll 0 0 Transparent;
+}
+
+.documentActions ul {
+  margin-top:-16px;
+}
+
+.documentActions li {
+  background-color:transparent;
+}
+
+.cartaz {
+  float: left;
+  padding: 5px;
+}
+
+#portal-top {
+  width: 100%;
+  height: 330px;
+  background: url('&dtml-portal_url;/bgLogo.jpg') center no-repeat;    
+}
+
+#portal-logo {
+  width: 930px;
+  height: 330px;
+  margin: 0 auto;
+}
+
+#portal-logo img {
+  margin:40px 0 1em 2em;
+}
+
+#lamparina {
+    float: left;
+    height: 100%;
+    width: 30%;
+}
+
+#lamparina img {
+    margin: 80px 0 0 40px;
+}
+
+#logo {
+    float: left;
+    height: 100%;
+    width: 40%;
+}
+
+#gramofone {
+    float: left;
+    height: 100%;
+    width: 30%;
+}
+
+#gramofone img {
+    margin: 80px 0 0 132px;
+}
+
+#gramofone .texto {
+    font-size: 9px;
+    color:#402305;
+    width: 100px;
+    margin-left: 150px;
+    text-align: center;
+}
+
+#gramofone .titulo {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 10px;
+}
+
+#gramofone a {
+  text-decoration: none;
+  color: #402305;
+}
+
+#portal-columns  {
+    margin:0 auto;
+    width:930px !important;
+}
+
+/* Estilos do menu */
+
+#menu {
+    width: 900px;
+    margin: 0 auto;
+}
+
+#menu .item {
+    padding-right: 40px;
+    float: left;
+}
+
+#menu .item-last {
+    float: left;
+}
+
+#menu a {
+  color: #402305;
+  text-decoration: none;
+  text-transform: lowercase;
+}
+
+
+/* Estilos da capa */
+
+
+#capa-grupo {
+    clear:both;
+    height:230px;
+    margin-top:30px;
+    padding: 20px;
+}
+
+#capa-grupo .foto {
+    margin-left: 30px;
+}
+
+.leia-mais {
+    text-align: right;
+    font-size: 10px;
+}
+
+.leia-mais a {
+    text-decoration: none;
+}
+
+#capa-proxima {
+    background: url('&dtml-portal_url;/hApresentacoes.jpg') no-repeat;
+    height: 222px;
+    margin-top:10px;  
+    margin-left: 25px;
+}
+
+#capa-proxima .imagem {
+    left:200px;
+    position:relative;
+    top:40px;
+}
+
+#capa-imprensa .esquerda {
+    width: 625px;
+    float: left;
+}
+
+#capa-imprensa .direita {
+    margin-top: 10px;
+    margin-right: 50px;
+    width: 200px;
+    float: right;
+}
+
+#capa-imprensa .conteudo {
+    min-height:110px;
+    padding-left: 50px;
+}
+
+#capa-imprensa .noticia {
+    margin-top: 12px;
+}
+
+#capa-imprensa a {
+    text-decoration: none;
+    color:#402309;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+#capa-imprensa a:hover {
+    text-decoration: underline;
+}
+
+#capa-contato {
+    background: url(&dtml-portal_url;/base.jpg) no-repeat;
+    height: 299px;
+    margin-top: 30px;
+    margin-bottom: -20px;
+}
+
+#capa-contato .texto {
+    float:left;
+    width: 250px;
+    margin-left: 300px;
+    font-weight: bold;
+    margin-top: 65px;    
+}
+
+#capa-contato fieldset {
+    float:left;
+    line-height:1em;
+    margin:30px 0 0 0;
+    padding:0 1em 1em;
+    width:280px;
+    border: 0;
+}
+    
+/* </dtml-with> */

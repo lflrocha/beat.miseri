@@ -1,0 +1,62 @@
+<div id="menu" 
+     i18n:domain="plone">
+
+    <div class="item">
+        <a href="#" tal:attributes="href string:${view/navigation_root_url}/o-grupo">
+            <img tal:attributes="src string:${view/navigation_root_url}/mGrupo.png">
+        </a>
+        <br />
+        <a href="#" tal:attributes="href string:${view/navigation_root_url}/o-grupo">
+            História
+        </a>
+    </div>
+
+    <div class="item">
+        <a href="#" tal:attributes="href string:${view/navigation_root_url}/espetaculos">
+            <img tal:attributes="src string:${view/navigation_root_url}/mEspetaculos.png">
+        </a>
+        <br />
+        <a href="#" tal:attributes="href string:${view/navigation_root_url}/espetaculos">Em Cartaz</a>
+        &nbsp;|&nbsp;
+        <a href="#" tal:attributes="href string:${view/navigation_root_url}/espetaculos">Espetáculos</a>
+    </div>
+
+    <div class="item">
+        <a href="#" tal:attributes="href string:${view/navigation_root_url}/imprensa">
+            <img tal:attributes="src string:${view/navigation_root_url}/mImprensa.png">
+        </a>
+        <br />
+        <a href="#" tal:attributes="href string:${view/navigation_root_url}/imprensa">Na Mídia</a>
+        &nbsp;|&nbsp;
+        <a href="#" tal:attributes="href string:${view/navigation_root_url}/imprensa">Releases</a>            
+    </div>
+
+    <div class="item">
+        <a href="#" tal:attributes="href string:${view/navigation_root_url}/multimidia">
+            <img tal:attributes="src string:${view/navigation_root_url}/mMultimidia.png">
+        </a>        
+        <br />
+        <a href="#" tal:attributes="href string:${view/navigation_root_url}/multimidia">Downloads</a>
+        &nbsp;|&nbsp;
+        <a href="#" tal:attributes="href string:${view/navigation_root_url}/multimidia">Vídeos</a>            
+    </div>
+
+    <div class="item">
+        <a href="#" tal:attributes="href string:${view/navigation_root_url}/depoimentos">
+            <img tal:attributes="src string:${view/navigation_root_url}/mDepoimentos.png">
+        </a>
+        <br />
+        &nbsp;
+    </div>
+
+    <div class="item-last">
+        <a href="#" tal:attributes="href string:${view/navigation_root_url}/contato">
+            <img tal:attributes="src string:${view/navigation_root_url}/mContato.png">
+        </a>
+        <br />
+        <a href="#"  tal:attributes="href string:${view/navigation_root_url}/contato">Contato</a>
+        &nbsp;|&nbsp;
+        <a href="#" tal:attributes="href string:${view/navigation_root_url}/contato">Cadastro</a>           
+    </div>
+
+</div>

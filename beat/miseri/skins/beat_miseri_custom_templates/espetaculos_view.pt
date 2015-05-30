@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-BR"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="pt-BR"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<body>
+    
+    <div metal:fill-slot="main"
+         tal:define="cartazes python:context.getCartazes()">
+
+      <div class="visualClear" id="clear-space-before-wrapper-table"><!-- --></div>
+
+        <tal:rep repeat="cartaz cartazes">
+            <div tal:define="obj cartaz/getObject" class="cartaz">
+                <a href="" tal:attributes="href python:obj.aq_parent.absolute_url()">
+                    <img tal:attributes="src string:${cartaz/getURL}/image_mini" />
+                </a>
+            </div>
+        </tal:rep>
+
+      <div class="visualClear" id="clear-space-before-wrapper-table"><!-- --></div>
+
+    </div>
+
+</body>
+
+</html>

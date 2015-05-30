@@ -1,0 +1,23 @@
+<div metal:define-macro="portal_logo"
+     id="portal-logo">
+
+  <div id="lamparina">
+    <img tal:attributes="src string:${view/navigation_root_url}/lamparina.png">
+  </div>
+
+  <div id="logo">
+    <a tal:attributes="href string:${view/navigation_root_url}">
+        <img tal:attributes="src string:${view/navigation_root_url}/logo.png">
+    </a>
+  </div>
+
+  <div id="gramofone">
+    <img tal:attributes="src string:${view/navigation_root_url}/gramofone.png">
+    <div class="texto">
+        <span class="titulo">Cancionissima</span><br />
+        Todo domingo das 10h às 12h.<br />
+        <a href="#">Clique aqui para ouvir</a>
+    </div>
+  </div>
+
+</div>

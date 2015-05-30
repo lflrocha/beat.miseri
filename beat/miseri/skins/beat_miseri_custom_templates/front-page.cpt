@@ -1,0 +1,231 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-BR"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="pt-BR"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<head>
+    <metal:noborder fill-slot="top_slot"
+                 tal:define="dummy python:request.set('disable_border',1)" />
+
+    <metal:mystyleslot fill-slot="style_slot">
+		<link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:${here/portal_url}/skin.css">
+    </metal:mystyleslot>
+    
+    <metal:myjsslot fill-slot="javascript_head_slot">
+        <script type="text/javascript" tal:attributes="src string:$portal_url/jquery-1.4.2.min.js"></script>    
+        <script type="text/javascript" tal:attributes="src string:$portal_url/jquery.jcarousel.min.js"></script>        
+        <script type="text/javascript">
+            jQuery(document).ready(function() {
+                jQuery('#mycarousel').jcarousel({ scroll: 5});
+            });
+        </script>        
+    </metal:myjsslot>    
+    
+</head>
+
+
+<body>
+
+<div metal:fill-slot="main"
+         tal:define="cartazes context/getCartazes;
+                     apresentacoes context/getApresentacoes;
+                     noticias context/getUltimasNoticias;
+                     ">
+
+    <div id="capa-cartaz" 
+         tal:condition="cartazes">
+        <ul id="mycarousel" class="jcarousel-skin-tango">
+            <tal:rep repeat="cartaz cartazes">
+                <li tal:define="obj cartaz/getObject">
+                    <a href="" tal:attributes="href python:obj.aq_parent.absolute_url()">
+                        <img tal:attributes="src string:${cartaz/getURL}/image_mini" />
+                    </a>
+                </li>
+
+            </tal:rep>
+        </ul>
+    </div>
+    
+    <div id="capa-grupo">
+        <img src="" tal:attributes="src string:$portal_url/mGrupo.png">
+        <img src="" tal:attributes="src string:$portal_url/hGrupo.png" class="foto" align="right"><br /><br />
+        <p tal:content="python:context['o-grupo'].Description()" />
+        <p class="leia-mais"><a href="" tal:attributes="href string:$portal_url/0-grupo">Leia mais...</a></p>
+    </div>
+    
+    <div id="capa-proxima"
+         tal:condition="apresentacoes">
+        <img class="imagem" tal:attributes="src string:$portal_url/mEspetaculos.png">
+        <tal:rep repeat="apresentacao apresentacoes">
+            <div tal:define="obj apresentacao/getObject" class="espetaculo"
+                 tal:condition="repeat/apresentacao/start">
+                <img tal:attributes="src python:obj.aq_parent.absolute_url() + '/cartaz.jpg'" width='60' height='80'><br />
+                <span tal:content="obj/aq_parent/Title" /><br />
+                <a href="" tal:attributes="href python:obj.aq_parent.absolute_url()">Saiba mais sobre o espetáculo</a>
+            </div>
+            <div class="apresentacao">
+                <span tal:content="python:DateTime(apresentacao.start).strftime('%d/%m/%Y %H:%M')" /> - 
+                <span tal:content="apresentacao/Title" /><br />
+                <span tal:content="apresentacao/location" />                
+            </div>
+        </tal:rep>
+    </div>
+    
+    
+    <div id="capa-imprensa"
+         tal:condition="noticias">
+        <div class="esquerda">
+            <img  tal:attributes="src string:$portal_url/hImprensa.png"><br />
+            <div class="conteudo">
+                <img class="imagem" tal:attributes="src string:$portal_url/mImprensa.png">        
+
+                <div tal:repeat="noticia noticias" class="noticia">
+                    <a href="" tal:attributes="href noticia/getURL">
+                        <span tal:content="noticia/Title" /> - 
+                        <span tal:content="python:DateTime(noticia.effective).strftime('%d/%m/%Y')" />
+                    </a>
+                    <br />
+                    <span tal:content="noticia/Description" />                        
+                </div>        
+            </div>
+            <img tal:attributes="src string:$portal_url/hImprensa2.png">        
+        </div>
+
+        <div class="direita">
+            <img tal:attributes="src string:$portal_url/hImprensaMaquina.png">        
+        </div>
+    </div>
+
+    <div class="visualClear"><!-- --></div>
+    
+    <div id="capa-contato">
+
+        <div class="texto">
+            <img tal:attributes="src string:$portal_url/tContato.png">
+            <br />
+
+            <span>
+                Fone: +55 54 8122 4356<br />
+                Email: miseri@misericoloni.com.br<br />
+                Caxias do Sul - RS - Brasil
+            </span>
+            <br /><br /><br />
+            <img tal:attributes="src string:$portal_url/tNovidades.png">        
+            <br />
+            <span>
+                Use os campos ao lado para falar conosco e receber not&iacute;cias do Grupo M&iacute;seri Coloni.
+            </span>
+            
+        </div>
+
+
+        <div tal:define="email_from_address portal/email_from_address">
+            <div tal:condition="email_from_address">
+                <form name="feedback_form"
+                    class="enableAutoFocus"
+                    action=""
+                    method="post"
+                    tal:define="errors options/state/getErrors"
+                    tal:attributes="action string:$here_url/$template_id">
+                <fieldset>
+                <tal:feedbackForm 
+                    tal:define="fullname python:request.get('fullname', member.getProperty('fullname', ''));
+                                email python:request.get('email', member.getProperty('email',''))">
+                    <div class="field"
+                      tal:condition="not:fullname"
+                      tal:define="error errors/sender_fullname|nothing"
+                      tal:attributes="class python:test(error, 'field error', 'field')">
+                      <label for="sender_fullname" i18n:translate="label_sender_fullname">
+                        Name
+                      </label>
+
+                      <div tal:content="error">Validation error output</div>
+
+                      <input type="text" 
+                             id="sender_fullname" 
+                             name="sender_fullname" 
+                             size="40" 
+                             value="" 
+                             tal:attributes="value request/sender_fullname|nothing"
+                             />
+                    </div>
+                    <input type="hidden" name="sender_fullname" value="fullname" tal:attributes="value fullname"
+                        tal:condition="fullname"/>
+                    <div class="field"
+                      tal:condition="not:email"
+                      tal:define="error errors/sender_from_address|nothing"
+                      tal:attributes="class python:test(error, 'field error', 'field')">
+                      <label for="sender_from_address" i18n:translate="label_sender_from_address">
+                        E-Mail
+                      </label>
+                      <span class="fieldRequired" title="Required">&nbsp;</span>
+
+                      <div tal:content="error">Validation error output</div>
+
+                      <input type="text" 
+                             id="sender_from_address" 
+                             name="sender_from_address" 
+                             size="40" 
+                             value="" 
+                             tal:attributes="value request/sender_from_address|nothing"
+                             />
+                    </div>
+                    <input type="hidden" name="sender_from_address" value="email" tal:attributes="value email"
+                        tal:condition="email"/>
+                </tal:feedbackForm>
+
+                  <input type="hidden" 
+                         id="subject" 
+                         name="subject" 
+                         value="Email do Site" 
+                         />
+                <div class="field"
+                  tal:define="error errors/message|nothing"
+                  tal:attributes="class python:test(error, 'field error', 'field')">
+                  <label for="message" i18n:translate="label_message">
+                    Message
+                  </label>
+                  <span class="fieldRequired" title="Required">&nbsp;</span>
+
+                  <div tal:content="error">Validation error output</div>
+    
+                  <textarea name="message"
+                            id="message"
+                            rows="5"
+                            cols="25"
+                            tal:content="request/message|nothing"
+                            > </textarea>
+                </div>
+    
+                <div class="formControls">
+
+                    <input class="context"
+                           type="submit"
+                           name="form.button.Send"
+                           value="Send"
+                           i18n:attributes="value label_send;"
+                           />
+
+                </div>
+
+                <input type="hidden" name="form.submitted" value="1" />
+
+                </fieldset>
+
+                </form>
+            </div>
+        </div>
+
+
+
+
+
+
+    </div>
+</div>
+
+</body>
+</html>
